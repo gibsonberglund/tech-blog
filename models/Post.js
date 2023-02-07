@@ -6,7 +6,7 @@ class Post extends Model {}
 Post.init(
   {
     // Manually define the primary key
-    post_id: {
+    id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true
@@ -17,20 +17,19 @@ Post.init(
     content: {
       type: DataTypes.STRING
     },
-    creator_id: {
-      type: DataTypes.INTEGER
-    },
-    date: {
+    user_name: {
       type: DataTypes.STRING
     },
   },
   {
     sequelize,
-    timestamps: false,
+    timestamps: true,
+    created_at: "created_date",
+    updated_at: "updated_at",
     // Prevent sequelize from renaming the table
     freezeTableName: true,
     underscored: true,
-    modelName: 'post'
+    modelName: 'posts'
   }
 );
 

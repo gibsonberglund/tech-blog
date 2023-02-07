@@ -1,22 +1,35 @@
 const router = require('express').Router();
-const { Post, User } = require('../models');
+const Post = require('../models/Post');
+
+
+// GET full list of posts
+router.get('/', (req, res) => {
+    // Get all books from the book table
+    const postData = Post.findAll().then((postData) => {
+      res.json(postData);
+    })
+    if (!postData) {
+        res.status(404).json({ message: 'No posts found!' });
+        return;
+    }
+  
+    res.status(200).json(postData);
+  });
+
 
 // GET a single post
-router.get('/:id', async (req, res) => {
-    try {
-      const postData = await Post.findByPk(req.params.id, {
-        include: [{ model: Post }],
-      });
-  
-      if (!postData) {
-        res.status(404).json({ message: 'No post found with that id!' });
-        return;
-      }
-  
-      res.status(200).json(postData);
-    } catch (err) {
-      res.status(500).json(err);
+//needs to be async?
+router.get('/:id', (req, res) => {
+    // Find a single book by its primary key (book_id)
+    const postData = Post.findByPk(req.params.id).then((postData) => {
+      res.json(postData);
+    });
+    if (!postData) {
+    res.status(404).json({ message: 'No post found with that id!' });
+    return;
     }
+
+    res.status(200).json(postData);
   });
 
 // CREATE a post
@@ -24,8 +37,9 @@ router.post('/', (req, res) => {
     // Use Sequelize's `create()` method to add a row to the table
     // Similar to `INSERT INTO` in plain SQL
     Post.create({
-      title: req.body.title,
-      text: req.body.text,
+      post_id: req.body.id,
+        title: req.body.title,
+      content: req.body.text,
       user_name: req.body.user_name,
     })
       .then((newPost) => {
@@ -37,3 +51,4 @@ router.post('/', (req, res) => {
       });
   });
   
+  module.exports = router;

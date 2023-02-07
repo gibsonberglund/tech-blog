@@ -5,22 +5,22 @@ USE blog_db;
 
 CREATE TABLE users(
     id INT NOT NULL,
-    username VARCHAR(30) NOT NULL,
+    user_name VARCHAR(30) NOT NULL,
     created_at DATETIME NOT NULL,
     updated_at DATETIME NOT NULL,
-    PRIMARY KEY (id)
+    PRIMARY KEY (user_name)
 );
 
 CREATE TABLE posts(
     id INT NOT NULL,
-    post_title VARCHAR(30) NOT NULL,
-    post_content TEXT NOT NULL,
-    user_id VARCHAR(30) NOT NULL,
+    title VARCHAR(30) NOT NULL,
+    content TEXT NOT NULL,
+    user_name VARCHAR(30) NOT NULL,
     created_at DATETIME NOT NULL,
     updated_at DATETIME NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (user_id)
-    REFERENCES users(id)
+    FOREIGN KEY (user_name)
+    REFERENCES users(user_name)
 );
 
 CREATE TABLE comments(
