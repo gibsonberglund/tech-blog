@@ -3,15 +3,11 @@ const Post = require('../models/Post');
 
 
 // GET full list of posts
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
     // Get all books from the book table
-    const postData = Post.findAll().then((postData) => {
+    const postData = await Post.findAll().then((postData) => {
       res.json(postData);
-    })
-    if (!postData) {
-        res.status(404).json({ message: 'No posts found!' });
-        return;
-    }
+    });
   
     res.status(200).json(postData);
   });
@@ -19,17 +15,12 @@ router.get('/', (req, res) => {
 
 // GET a single post
 //needs to be async?
-router.get('/:id', (req, res) => {
+router.get('/:id', async (req, res) => {
     // Find a single book by its primary key (book_id)
-    const postData = Post.findByPk(req.params.id).then((postData) => {
-      res.json(postData);
+    const postData = await Post.findByPk(req.params.id).then((postData) => {
+      res.status(200).json(postData);
     });
-    if (!postData) {
-    res.status(404).json({ message: 'No post found with that id!' });
-    return;
-    }
-
-    res.status(200).json(postData);
+    res.json(postData);
   });
 
 // CREATE a post
