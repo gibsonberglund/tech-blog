@@ -10,6 +10,7 @@ router.get('/', async (req, res) => {
     });
   
     res.status(200).json(postData);
+    return res.render('./views/partials/blogpage', postData);
   });
 
 
@@ -21,6 +22,7 @@ router.get('/:id', async (req, res) => {
       res.status(200).json(postData);
     });
     res.json(postData);
+    return res.render('./views/partials/blogthumb', postData);
   });
 
 // CREATE a post
@@ -31,11 +33,12 @@ router.post('/', (req, res) => {
       post_id: req.body.id,
         title: req.body.title,
       content: req.body.text,
-      user_name: req.body.user_name,
+      username: req.body.username,
     })
       .then((newPost) => {
         // Send the newly created row as a JSON object
         res.json(newPost);
+        return res.render('./views/partials/blogthumb', newPost);
       })
       .catch((err) => {
         res.json(err);

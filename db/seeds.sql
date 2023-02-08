@@ -1,4 +1,4 @@
-INSERT INTO users (id, username, created_at, updated_at)
+INSERT INTO users (username, created_at, updated_at)
 VALUES (1, "LepRECON", "2023-02-07 00:13:45", "2023-02-07 00:13:45"),
 (2, "DaVinci", "2023-02-07 00:25:16", "2023-02-07 00:25:16");
 

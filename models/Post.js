@@ -17,7 +17,7 @@ Post.init(
     content: {
       type: DataTypes.STRING
     },
-    user_name: {
+    username: {
       type: DataTypes.STRING
     },
   },

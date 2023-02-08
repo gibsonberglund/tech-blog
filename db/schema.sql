@@ -4,7 +4,6 @@ CREATE DATABASE blog_db;
 USE blog_db;
 
 CREATE TABLE users(
-    id INT NOT NULL,
     username VARCHAR(30) NOT NULL,
     created_at DATETIME NOT NULL,
     updated_at DATETIME NOT NULL,
@@ -12,7 +11,7 @@ CREATE TABLE users(
 );
 
 CREATE TABLE posts(
-    id INT NOT NULL,
+    id INT NOT NULL AUTO_INCREMENT,
     title VARCHAR(30) NOT NULL,
     content TEXT NOT NULL,
     username VARCHAR(30),
@@ -24,7 +23,7 @@ CREATE TABLE posts(
 );
 
 CREATE TABLE comments(
-    id INT NOT NULL,
+    id INT NOT NULL AUTO_INCREMENT,
     comment_creator VARCHAR(30) NOT NULL,
     post_id INT,
     created_at DATETIME NOT NULL,
