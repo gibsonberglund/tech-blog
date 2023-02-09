@@ -18,7 +18,8 @@ Post.init(
       type: DataTypes.STRING
     },
     username: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      foreignKey: true
     },
   },
   {

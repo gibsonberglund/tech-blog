@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
     });
   
     res.status(200).json(postData);
-    return res.render('./views/partials/blogpage', postData);
+    return res.render('blogpage', postData);
   });
 
 
@@ -22,7 +22,7 @@ router.get('/:id', async (req, res) => {
       res.status(200).json(postData);
     });
     res.json(postData);
-    return res.render('./views/partials/blogthumb', postData);
+    //return res.render('./views/partials/blogthumb', postData);
   });
 
 // CREATE a post
@@ -38,7 +38,7 @@ router.post('/', (req, res) => {
       .then((newPost) => {
         // Send the newly created row as a JSON object
         res.json(newPost);
-        return res.render('./views/partials/blogthumb', newPost);
+        //return res.render('./views/partials/blogthumb', newPost);
       })
       .catch((err) => {
         res.json(err);

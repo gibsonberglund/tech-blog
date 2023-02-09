@@ -6,18 +6,19 @@
   </div>
   <!-- We implement the built-in helper, #each. This helper will iterate over dishes -->
   {{#each post as |postData|}}
+    <div class="postdisplay">
   <!-- For each dish in the array of dish objects, the following <div> will be rendered. -->
-    <div class="post col-md-5">
-      <!-- We use dish.id instead of <od> and <li> elements. -->
-      <p>
-        {{post.title}}.
-        {{post.content}}
-      </p>
-    </div>
-    <div class="col-md-7">
-      <p>
-        <!-- guest_name will eventually go here -->
-      </p>
+      <div class="postdisplayhead">
+        <!-- We use dish.id instead of <od> and <li> elements. -->
+        <p>
+          {{post.title}}
+        </p>
+      </div>
+      <div class="postdisplayexcerpt">
+        <p>
+          {{post.content}}
+        </p>
+      </div>
     </div>
     <!-- Below, we close the #each helper. -->
   {{/each}}
