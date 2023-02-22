@@ -1,12 +1,12 @@
-<section class="card">
+<section class="postdisplay">
   <!-- The contents of the painting card links to the painting page using the painting ID -->
-  <a href="/posts/{{postData.id}}">
+  <a href="/posts/{{post.id}}">
     <!-- The card contains the painting name as the card header -->
-    <header>{{postData.title}}</header>
+    <header class="postdisplayhead">{{post.title}}</header>
     <!-- In the body of the card, the painting is rendered along with the artist name -->
 
-    <div class="card-body">
-      <p>{{postData.content}}</p>
+    <div class="postdisplayexcerpt">
+      <p>{{post.content}}</p>
     </div>
   </a>
 </section>

@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const Post = require('../models/Post');
-const User = require('../models/User');
+const Post = require('../../models/Post');
+const User = require('../../models/User');
 
 
 // GET full list of posts
@@ -20,13 +20,11 @@ router.get('/', async (req, res) => {
 //needs to be async?
 router.get('/:id', async (req, res) => {
     // Find a single book by its primary key (book_id)
-    const postData = await Post.findByPk(req.params.id).then((postData) => {
-      res.status(200).json(postData);
-      
-    });
+    const postData = await Post.findByPk(req.params.id)
 
-    res.json(postData);
-      return res.render('partials/blogthumb', postData);
+    const post = postData.get({ plain: true });
+    
+    res.render('singlepost', {post});
   });
 
 // CREATE a post

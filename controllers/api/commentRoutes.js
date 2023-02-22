@@ -3,7 +3,7 @@
 
 
 const router = require('express').Router();
-const { Post, User, Comment } = require('../models');
+const { Post, User, Comment } = require('../../models');
 
 // GET a single post
 router.get('/:id', async (req, res) => {
