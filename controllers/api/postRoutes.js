@@ -1,6 +1,5 @@
 const router = require('express').Router();
-const Post = require('../../models/Post');
-const User = require('../../models/User');
+const { Post, User } = require('../../models');
 
 
 // GET full list of posts
@@ -31,20 +30,21 @@ router.get('/:id', async (req, res) => {
 router.post('/', (req, res) => {
     // Use Sequelize's `create()` method to add a row to the table
     // Similar to `INSERT INTO` in plain SQL
-    Post.create({
-      post_id: req.body.id,
-        title: req.body.title,
-      content: req.body.text,
-      username: req.body.username,
-    })
-      .then((newPost) => {
+    console.log('creating post');
+    try {
+    const newPost = Post.create({
+      title: req.body.title,
+      content: req.body.content,
+      user_id: req.session.user_id,
+    });
+      console.log('post created');
         // Send the newly created row as a JSON object
-        res.json(newPost);
+      res.status(200).json(newPost);
+      console.log('post added to json');
         //return res.render('./views/partials/blogthumb', newPost);
-      })
-      .catch((err) => {
+      } catch(err) {
+        console.log('catching error');
         res.json(err);
-      });
-  });
+      }});
   
   module.exports = router;

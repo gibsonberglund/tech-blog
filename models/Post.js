@@ -15,11 +15,15 @@ Post.init(
       type: DataTypes.STRING
     },
     content: {
-      type: DataTypes.STRING
+      type: DataTypes.TEXT
     },
-    username: {
+    user_id: {
       type: DataTypes.STRING,
-      foreignKey: true
+      foreignKey: true,
+      references: {
+        model: 'user',
+        key: 'user_id',
+      },
     },
   },
   {
