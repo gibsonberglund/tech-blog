@@ -18,7 +18,7 @@ Post.init(
       type: DataTypes.TEXT
     },
     user_id: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       foreignKey: true,
       references: {
         model: 'user',

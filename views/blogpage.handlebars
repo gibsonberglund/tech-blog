@@ -36,10 +36,10 @@
       </div>
       <div class="postdisplayexcerpt">
         <p>
-         By: {{post.username}}
+         By: {{post.user.username}}
         </p>
         <p>
-          {{post.createdAt}}
+          {{format_date post.createdAt}}
         </p>
       </div>
     </div>

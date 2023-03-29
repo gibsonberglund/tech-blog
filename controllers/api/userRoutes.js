@@ -18,7 +18,7 @@ router.post('/', async (req, res) => {
 
 router.post('/login', async (req, res) => {
   try {
-console.log('try 1');
+    console.log('try 1');
     const userData = await User.findOne({ where: { username: req.body.username } });
     console.log('try 2');
     if (!userData) {
@@ -38,10 +38,13 @@ console.log('try 1');
     }
     console.log('try 5');
     req.session.save(() => {
+      console.log('try 6');
       req.session.user_id = userData.id;
+      console.log('try7');
       req.session.logged_in = true;
-      
+      console.log('try 8');
       res.json({ user: userData, message: 'You are now logged in!' });
+      console.log('user logged in: ', session.user_id);
     });
 
   } catch (err) {
